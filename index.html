@@ -19,19 +19,30 @@
 
         <h2 id="palavra"></h2>
 
+        <input
+            type="text"
+            id="letra"
+            maxlength="1">
+
+        <button onclick="tentarLetra()">
+            Tentar
+        </button>
+
+        <p>
+            Erros:
+            <span id="erros">0</span>
+        </p>
+
+        <p>
+            Letras erradas:
+            <span id="erradas"></span>
+        </p>
+
+        <p id="mensagem"></p>
+
     </div>
 
     <script src="script.js"></script>
-
-    <p>
-Erros:
-<span id="erros">0</span>
-</p>
-
-<p>
-Letras erradas:
-<span id="erradas"></span>
-</p>
 
 </body>
 

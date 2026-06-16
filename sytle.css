@@ -1,0 +1,58 @@
+body {
+
+    font-family: Arial, sans-serif;
+
+    text-align: center;
+
+    background-color: #f4f4f4;
+
+    margin-top: 50px;
+}
+
+.container {
+
+    width: 500px;
+
+    margin: auto;
+
+    background: white;
+
+    padding: 20px;
+
+    border-radius: 10px;
+
+    box-shadow: 0px 0px 10px gray;
+}
+
+h1 {
+
+    color: #333;
+}
+
+h2 {
+
+    letter-spacing: 5px;
+}
+
+input {
+
+    width: 50px;
+
+    text-align: center;
+
+    padding: 8px;
+}
+
+button {
+
+    padding: 8px 15px;
+
+    cursor: pointer;
+}
+
+#mensagem {
+
+    font-size: 20px;
+
+    margin-top: 20px;
+}

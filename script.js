@@ -8,7 +8,12 @@ const palavras = [
     "chocolate",
     "astronauta",
     "cachoeira",
-    "camiseta"
+    "camiseta",
+    "escola",
+    "janela",
+    "futebol",
+    "praia",
+    "viagem"
 ];
 
 const palavra =
@@ -17,6 +22,7 @@ const palavra =
 let letras = [];
 let erros = 0;
 let erradas = [];
+let fimDeJogo = false;
 
 function atualizarTela() {
 
@@ -34,20 +40,51 @@ function atualizarTela() {
         }
     }
 
-    document.getElementById("palavra").textContent = exibicao;
+    document.getElementById("palavra").textContent =
+        exibicao;
 
-    document.getElementById("erros").textContent = erros;
+    document.getElementById("erros").textContent =
+        erros;
 
     document.getElementById("erradas").textContent =
         erradas.join(" ");
+
+    verificarFimDeJogo(exibicao);
+}
+
+function verificarFimDeJogo(exibicao) {
+
+    const venceu = !exibicao.includes("_");
+
+    if (venceu) {
+
+        fimDeJogo = true;
+
+        document.getElementById("mensagem").innerHTML =
+            "🎉 <strong>Você venceu!</strong>";
+    }
+
+    if (erros >= 6) {
+
+        fimDeJogo = true;
+
+        document.getElementById("mensagem").innerHTML =
+            `😢 <strong>Você perdeu!</strong><br>
+            A palavra era: <strong>${palavra}</strong>`;
+    }
 }
 
 function tentarLetra() {
 
+    if (fimDeJogo) {
+        return;
+    }
+
+    const campo =
+        document.getElementById("letra");
+
     const letra =
-        document.getElementById("letra")
-        .value
-        .toLowerCase();
+        campo.value.toLowerCase();
 
     if (
         letra &&
@@ -64,7 +101,7 @@ function tentarLetra() {
         }
     }
 
-    document.getElementById("letra").value = "";
+    campo.value = "";
 
     atualizarTela();
 }
