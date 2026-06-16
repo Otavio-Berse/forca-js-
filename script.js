@@ -16,13 +16,39 @@ const palavras = [
     "viagem"
 ];
 
-const palavra =
-    palavras[Math.floor(Math.random() * palavras.length)];
+let palavra;
+let letras;
+let erros;
+let erradas;
+let fimDeJogo;
 
-let letras = [];
-let erros = 0;
-let erradas = [];
-let fimDeJogo = false;
+let vitorias = 0;
+let derrotas = 0;
+
+const desenhos = [
+    "",
+    "O",
+    "O<br>|",
+    "O<br>/|",
+    "O<br>/|\\",
+    "O<br>/|\\<br>/",
+    "O<br>/|\\<br>/ \\"
+];
+
+function iniciarJogo() {
+
+    palavra =
+        palavras[Math.floor(Math.random() * palavras.length)];
+
+    letras = [];
+    erros = 0;
+    erradas = [];
+    fimDeJogo = false;
+
+    document.getElementById("mensagem").innerHTML = "";
+
+    atualizarTela();
+}
 
 function atualizarTela() {
 
@@ -49,6 +75,15 @@ function atualizarTela() {
     document.getElementById("erradas").textContent =
         erradas.join(" ");
 
+    document.getElementById("vitorias").textContent =
+        vitorias;
+
+    document.getElementById("derrotas").textContent =
+        derrotas;
+
+    document.getElementById("forca").innerHTML =
+        desenhos[erros];
+
     verificarFimDeJogo(exibicao);
 }
 
@@ -56,29 +91,35 @@ function verificarFimDeJogo(exibicao) {
 
     const venceu = !exibicao.includes("_");
 
-    if (venceu) {
+    if (venceu && !fimDeJogo) {
 
         fimDeJogo = true;
+
+        vitorias++;
 
         document.getElementById("mensagem").innerHTML =
             "🎉 <strong>Você venceu!</strong>";
+
+        atualizarTela();
     }
 
-    if (erros >= 6) {
+    if (erros >= 6 && !fimDeJogo) {
 
         fimDeJogo = true;
 
+        derrotas++;
+
         document.getElementById("mensagem").innerHTML =
             `😢 <strong>Você perdeu!</strong><br>
-            A palavra era: <strong>${palavra}</strong>`;
+             Palavra: <strong>${palavra}</strong>`;
+
+        atualizarTela();
     }
 }
 
 function tentarLetra() {
 
-    if (fimDeJogo) {
-        return;
-    }
+    if (fimDeJogo) return;
 
     const campo =
         document.getElementById("letra");
@@ -106,4 +147,9 @@ function tentarLetra() {
     atualizarTela();
 }
 
-atualizarTela();
+function novoJogo() {
+
+    iniciarJogo();
+}
+
+iniciarJogo();

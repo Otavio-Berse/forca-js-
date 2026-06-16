@@ -17,6 +17,8 @@
 
         <h1>Jogo da Forca</h1>
 
+        <div id="forca" class="forca"></div>
+
         <h2 id="palavra"></h2>
 
         <input
@@ -38,7 +40,21 @@
             <span id="erradas"></span>
         </p>
 
+        <p>
+            Vitórias:
+            <span id="vitorias">0</span>
+        </p>
+
+        <p>
+            Derrotas:
+            <span id="derrotas">0</span>
+        </p>
+
         <p id="mensagem"></p>
+
+        <button onclick="novoJogo()">
+            Novo Jogo
+        </button>
 
     </div>
 

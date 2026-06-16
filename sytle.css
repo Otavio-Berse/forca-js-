@@ -2,16 +2,16 @@ body {
 
     font-family: Arial, sans-serif;
 
-    text-align: center;
-
     background-color: #f4f4f4;
 
-    margin-top: 50px;
+    text-align: center;
+
+    margin-top: 40px;
 }
 
 .container {
 
-    width: 500px;
+    width: 550px;
 
     margin: auto;
 
@@ -32,6 +32,17 @@ h1 {
 h2 {
 
     letter-spacing: 5px;
+
+    font-size: 30px;
+}
+
+.forca {
+
+    font-size: 30px;
+
+    margin-bottom: 20px;
+
+    min-height: 90px;
 }
 
 input {
@@ -45,14 +56,16 @@ input {
 
 button {
 
-    padding: 8px 15px;
+    padding: 10px;
+
+    margin: 5px;
 
     cursor: pointer;
 }
 
 #mensagem {
 
-    font-size: 20px;
+    font-size: 22px;
 
     margin-top: 20px;
 }
