@@ -14,10 +14,59 @@ const palavras = [
 const palavra =
     palavras[Math.floor(Math.random() * palavras.length)];
 
-let exibicao = "";
+let letras = [];
+let erros = 0;
+let erradas = [];
 
-for (let i = 0; i < palavra.length; i++) {
-    exibicao += "_ ";
+function atualizarTela() {
+
+    let exibicao = "";
+
+    for (let char of palavra) {
+
+        if (letras.includes(char)) {
+
+            exibicao += char + " ";
+
+        } else {
+
+            exibicao += "_ ";
+        }
+    }
+
+    document.getElementById("palavra").textContent = exibicao;
+
+    document.getElementById("erros").textContent = erros;
+
+    document.getElementById("erradas").textContent =
+        erradas.join(" ");
 }
 
-document.getElementById("palavra").textContent = exibicao;
+function tentarLetra() {
+
+    const letra =
+        document.getElementById("letra")
+        .value
+        .toLowerCase();
+
+    if (
+        letra &&
+        !letras.includes(letra)
+    ) {
+
+        letras.push(letra);
+
+        if (!palavra.includes(letra)) {
+
+            erros++;
+
+            erradas.push(letra);
+        }
+    }
+
+    document.getElementById("letra").value = "";
+
+    atualizarTela();
+}
+
+atualizarTela();
